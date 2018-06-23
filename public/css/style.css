@@ -1,0 +1,74 @@
+hmtl, body{
+	top: 0;
+	left: 0;
+	width: 100%;
+	
+}
+header{
+	background: grey;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+nav{
+	padding-top: 25px;
+	
+}
+a{
+	text-decoration: inherit;
+	color: white;
+	margin-left: 15px;
+}
+.fa-home,.fa-book,.fa-sign-in-alt{
+	color: black;
+	margin-right: 10px;
+}
+/* menu deroulant episode */
+.menu{
+	display: flex;
+	list-style: none;
+}
+.menu .sous-menu{
+	display: block;
+	list-style: none;	
+}
+.menu .sous-menu li a{
+	color: black;
+	display: none;
+}
+img{
+	width: 100%;
+	background-size: cover;
+}
+.intro-perso{
+	display: flex;
+	display: block;
+	box-sizing: border-box;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 600px;
+}
+.tableau-Episode{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.Image-Ep-1, .Image-Ep-2, .Image-Ep-3{
+	width: 400px;
+	position: relative;
+}
+h2{
+	text-align: center;
+}
+.text{
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	left: 50px;
+	color: white;
+}
+footer{
+	margin-top: 100px;
+}
