@@ -12,17 +12,16 @@ class ArticleDao extends BaseDao
 
     public function findAll()
     {
-        $result = $this->db
-            ->query("SELECT * FROM article");
+        $result = $this->db->query("SELECT * FROM article");
 
         $articles = array();
-		var_dump(Article::class);
-      while ( $article = $result->fetch_object(Article::class)) {
+        while ($article = $result->fetch_object(Article::class)) {
             array_push($articles, $article);
         }
- 
-        return $articles; 
+
+        return $articles;
     }
+
     public function findById($articleId)
     {
         return $this->db
@@ -32,7 +31,7 @@ class ArticleDao extends BaseDao
 
     public function create()
     {
-
+	
     }
 
     public function update()

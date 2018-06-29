@@ -1,17 +1,17 @@
 <?php
 
 require_once('dao/ArticleDao.php');
-require_once('dao/comments_Dao.php');
+require_once('dao/CommentDao.php');
 
 class FrontendController
 {
     private $articleDao;
-	private $comments_Dao;
+    private $commentDao;
 
     public function __construct()
     {
         $this->articleDao = new ArticleDao();
-		$this->comments_Dao = new comments_Dao();
+        $this->commentDao = new CommentDao();
     }
 
     public function listArticles()
@@ -24,9 +24,14 @@ class FrontendController
     {
         $article = $this->articleDao->findById($articleId);
         $articles = $this->articleDao->findAll();
-		/*$speudo = $this->comments_Dao->findbyid($speudo)
-        $comments =$this->comments_Dao->findAll();*/
-			require('view/detail-article.php');
+        $comments = $this->commentDao->findAllByArticleId($articleId);
+        require('view/detail-article.php');
+    }
+
+    public function addComment($articleId, $formData)
+    {
+        $this->commentDao->create($articleId, $formData);
+        header('Location: ?action=detailArticle&articleId=' . $articleId);
     }
 
 }

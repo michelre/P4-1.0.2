@@ -14,9 +14,18 @@ if ($_GET['action'] == 'detailArticle') {
     return;
 }
 
+if($_GET['action'] == 'addComment'){
+    $frontendController->addComment($_GET['articleId'], $_POST);
+    return;
+}
+
+if($_GET['action'] == 'signalComment'){
+
+    return;
+}
+
 /**
- * 1. Penser à exporter la DB en un seul fichier (bien vérifier que il y a les requêtes d'insertion des données)
- * 2. Afficher la liste des articles sous forme de tableau sans image sur la page d'index
- * 3. Lister sur la page de détail d'un article les commentaires associés (Nouveau modèle et une nouvelle DAO)
- * 4. Implémenter le bouton signaler (revoir un peu le schéma de la table commentaires + créer la route + le controleur + DAO associés)
+ * 1. Implémenter le bouton signaler (revoir un peu le schéma de la table commentaires + créer la route + le controleur + DAO associés)
+ * 2. Mettre Bootstrap sur le projet
+ * 3. Commencer la partie admin (BackendController + la page d'accueil de la partie admin + formulaire de connexion)
  */
