@@ -34,4 +34,16 @@ class FrontendController
         header('Location: ?action=detailArticle&articleId=' . $articleId);
     }
 
+    public function displayLoginPage()
+    {
+        require('view/login.php');
+    }
+
+    public function notifiyComment($commentId)
+    {
+        $comment = $this->commentDao->findById($commentId);
+        $this->commentDao->notify($comment);
+        header('Location: ?action=detailArticle&articleId=' . $comment->getArticleId());
+    }
+
 }
