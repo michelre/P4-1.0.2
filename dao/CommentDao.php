@@ -21,9 +21,11 @@ class CommentDao extends BaseDao
 
     }
 
-    public function findById()
+    public function findById($commentId)
     {
-
+        return $this->db
+            ->query('SELECT * FROM comment WHERE id = ' . $commentId)
+            ->fetch_object(Comment::class);
     }
 
     public function create($articleId, $formData)
@@ -33,11 +35,9 @@ class CommentDao extends BaseDao
         $stmt->execute();
     }
 
-    public function commentsignaler($comment)
+    public function notify($comment)
     {
-      return $this->db
-            ->query('UPDATE comments SET commentsignaler = 1 WHERE id = ' . $comment->getId())
-            ->execute();
+      $this->db->query('UPDATE comment SET is_notified = 1 WHERE id = ' . $comment->getId());
     }
 
     public function delete($comment)
