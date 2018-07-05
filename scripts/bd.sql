@@ -22,10 +22,12 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+SET foreign_key_checks = 0;
+
 --
 -- Structure de la table `article`
 --
-
+DROP TABLE article;
 CREATE TABLE IF NOT EXISTS `article` (
   `id` int(15) AUTO_INCREMENT NOT NULL,
   `title` varchar(30) DEFAULT NULL,
@@ -41,14 +43,14 @@ INSERT INTO article(title, content, date_creation) VALUES('Titre 3', 'Contenu 3'
 --
 -- Structure de la table `comment`
 --
-
+DROP TABLE comment;
 CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(15) AUTO_INCREMENT PRIMARY KEY,
   `author` VARCHAR(255) DEFAULT NULL,
   `comment` TEXT DEFAULT NULL,
   `date_creation` date DEFAULT NULL,
   `article_id` int(15),
-  `signaler` int(15),
+  `is_notified` TINYINT(1) DEFAULT 0,
   FOREIGN KEY (article_id) REFERENCES article(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -56,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 --
 -- Structure de la table `users`
 --
-
+DROP TABLE users;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
@@ -64,11 +66,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
+SET foreign_key_checks = 1;
 --
 -- Contenu de la table `users`
 --
 
-INSERT INTO `projet4`.`users` (`id`, `username`, `password`) VALUES ('1', 'admin', 'password');
+-- INSERT INTO user(`id`, `username`, `password`) VALUES ('1', 'admin', 'password');
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
