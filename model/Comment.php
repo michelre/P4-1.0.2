@@ -8,7 +8,7 @@ class Comment
     private $comment;
     private $date_creation;
     private $article_id;
-	private $commentsignaler;
+    private $is_notified;
 
     /**
      * @return mixed
@@ -89,18 +89,18 @@ class Comment
     {
         $this->article_id = $article_id;
     }
-    
-	public function getcommentsignaler()
+
+    public function isNotified()
     {
-        return $this->commentsignaler;
+        return $this->is_notified;
     }
 
     /**
-     * @param mixed $commentsignaler
+     * @param mixed $isNotified
      */
-    public function setcommentsignaler($article_id)
+    public function setIsNotified($isNotified)
     {
-        $this->commentsignaler = $commentsignaler;
+        $this->is_notified = $isNotified;
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Comment
+class User
 {
 
     private $id;
@@ -25,7 +25,7 @@ class Comment
     /**
      * @return mixed
      */
-    public function getusername()
+    public function getUsername()
     {
         return $this->username;
     }
@@ -33,7 +33,7 @@ class Comment
     /**
      * @param mixed $username
      */
-    public function usernmame($username)
+    public function setUsernmame($username)
     {
         $this->username = $username;
     }
@@ -41,7 +41,7 @@ class Comment
     /**
      * @return mixed
      */
-    public function getpassword()
+    public function getPassword()
     {
         return $this->password;
     }
@@ -49,9 +49,9 @@ class Comment
     /**
      * @param mixed $password
      */
-    public function setpassword($password)
+    public function setPassword($password)
     {
-        $this->comment = $password;
+        $this->password = $password;
     }
 
 }

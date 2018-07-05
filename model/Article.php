@@ -61,7 +61,7 @@ class Article
      */
     public function getDateCreation()
     {
-        return $this->dateCreation;
+        return $this->date_creation;
     }
 
     /**
@@ -69,7 +69,7 @@ class Article
      */
     public function setDateCreation($dateCreation)
     {
-        $this->dateCreation = $dateCreation;
+        $this->date_creation = $dateCreation;
     }
 
 
