@@ -29,23 +29,23 @@ class ArticleDao extends BaseDao
             ->fetch_object(Article::class);
     }
 
-    public function create()
+    public function create($article)
     {
-	      return $this->db
-            ->query('SELECT * FROM article WHERE id = ' . $articleId)
-            ->fetch_object(Article::class);
+        $stmt = $this->db->prepare('INSERT INTO article(title, content, date_creation) VALUES(?, ?, NOW())');
+        $stmt->bind_param('ss', $article->getTitle(), $article->getContent());
+        $stmt->execute();
     }
 
-    public function update()
+    public function update($article)
     {
         $stmt = $this->db->prepare('UPDATE article SET title = ?, content = ? WHERE id = ?');
-        return $stmt->execute(array($article->getTitle(), $article->getContent(), $article->getId()));
+        $stmt->bind_param('sss', $article->getTitle(), $article->getContent(), $article->getId());
+        $stmt->execute();
     }
 
-    public function delete()
+    public function delete($article)
     {
-      $req = $this->db->query('DELETE FROM article WHERE id = ' . $article->getId());
-        $req->execute();
+        $this->db->query('DELETE FROM article WHERE id = ' . $article->getId());
     }
 
 }

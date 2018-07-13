@@ -7,9 +7,13 @@ require_once('BaseDao.php');
 class CommentDao extends BaseDao
 {
 
-    public function findAllByArticleId($articleId)
+    public function findAllByArticleId($articleId, $isNotified = null)
     {
-        $stmt = $this->db->prepare("SELECT * FROM comment WHERE article_id = ?");
+        if(!isset($isNotified)){
+            $stmt = $this->db->prepare("SELECT * FROM comment WHERE article_id = ?");
+        } else  {
+            $stmt = $this->db->prepare("SELECT * FROM comment WHERE article_id = ? AND is_notified = 1");
+        }
         $stmt->bind_param('s', $articleId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -37,13 +41,23 @@ class CommentDao extends BaseDao
 
     public function notify($comment)
     {
-      $this->db->query('UPDATE comment SET is_notified = 1 WHERE id = ' . $comment->getId());
+        $this->db->query('UPDATE comment SET is_notified = 1 WHERE id = ' . $comment->getId());
     }
 
-    public function delete($comment)
+	  public function acceptnotify($comment)
     {
- 		return $this->db->query('DELETE FROM comment WHERE id = ' . $comment
-								->getId())->execute();
+        $this->db->query('UPDATE comment SET is_notified = 0 WHERE id = ' . $comment->getId());
+    }
+	
+      public function delete($comment)
+    {
+        $this->db->query('DELETE FROM comment WHERE id = ' . $comment->getId());
+    }
+
+    public function deleteAllFromArticle($article)
+    {
+        var_dump('DELETE FROM comment WHERE article_id = ' . $article->getId());
+        return $this->db->query('DELETE FROM comment WHERE article_id = ' . $article->getId());
     }
 
 }
