@@ -27,7 +27,7 @@ if($_GET['action'] == 'signalComment'){
 }
 
 if($_GET['action'] == 'login'){
-    $frontendController->displayLoginPage();
+    $frontendController->displayLoginPage(isset($_GET['error']));
     return;
 }
 
@@ -37,7 +37,7 @@ if($_GET['action'] == 'logout'){
 }
 
 if($_GET['action'] == 'loginAction'){
-    $backendController->connexion();
+    $backendController->connexion($_POST['username'], $_POST['password']);
     return;
 }
 

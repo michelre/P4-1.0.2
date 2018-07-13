@@ -1,14 +1,20 @@
 <?php
 require_once('dao/BaseDao.php');
+require_once('model/User.php');
 
 class UserDao extends BaseDao
 {
-    public function connect($username)
+    public function signup()
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM user WHERE username = ?');
-        $req->execute(array($username));
-        $user = $req->fetch();
-        return new User($user['id'], $user['username'], $user['password']);
+        $password = password_hash("root", PASSWORD_BCRYPT);
+        $req = $this->db
+            ->query('INSERT INTO users(username, password) VALUES("root", "' . $password . '" )');
+    }
+
+    public function findByUsername($username)
+    {
+        return $this->db
+            ->query('SELECT * FROM users WHERE username = "' . $username . '"')
+            ->fetch_object(User::class);
     }
 }

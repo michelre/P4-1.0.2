@@ -22,11 +22,18 @@
             <?php } ?>
         </div>
       </li>
-      <li class="nav-item">
-          <?php if (isset($user)) { ?>
-            <a class="nav-link" href="?action=logout"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Déconnexion</a>
+      <li class="nav-item dropdown">
+          <?php if ($isConnected) { ?>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuAdminLink" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false"><i class="fas fa-book" aria-hidden="true"></i>
+              Admin
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuAdminLink">
+              <a class="nav-link" href="?action=pageAdmin"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Espace Admin</a>
+              <a class="nav-link" href="?action=logout"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Déconnexion</a>
+            </div>
           <?php } ?>
-          <?php if(!isset($user)) { ?>
+          <?php if (!$isConnected) { ?>
             <a class="nav-link" href="?action=login"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Connexion</a>
           <?php } ?>
       </li>
