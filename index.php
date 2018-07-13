@@ -45,14 +45,49 @@ if($_GET['action'] == 'pageAdmin'){
     $backendController->displayPageAdmin();
     return;
 }
-if($_GET['action'] == 'addarticle'){
-    $backendController->postArticle();
+
+if($_GET['action'] == 'displayAddArticle'){
+    $backendController->displayAddArticle();
+    return;
+}
+
+if($_GET['action'] == 'addArticle'){
+    $backendController->postArticle($_POST["title"], $_POST["content"]);
+    return;
+}
+
+if($_GET['action'] == 'deleteArticle'){
+    $backendController->deleteArticle($_GET['articleId']);
+    return;
+}
+
+if($_GET['action'] == 'displayUpdateArticle'){
+    $backendController->displayUpdateArticle($_GET['articleId']);
+    return;
+}
+
+if($_GET['action'] == 'updateArticle'){
+    $backendController->modifyArticle($_GET['articleId'], $_POST['title'], $_POST['content']);
+    return;
+}
+
+if($_GET['action'] == 'notifiedComments'){
+    $backendController->notifiedComments($_GET['articleId']);
+    return;
+}
+
+if($_GET['action'] == 'keepComment'){
+    $backendController->keepComment($_GET['commentId']);
+    return;
+}
+
+if($_GET['action'] == 'deleteComment'){
+    $backendController->deleteComment($_GET['commentId']);
     return;
 }
 
 /**
- * 1. Installer tinyMCE (pour faire du texte riche)
- * 2. Implémenter la partie admin (Ajouter un nouvel article, modifier un article et le supprimer)
- * 3. Gérer les commentaires dans la partie admin
+ * 1. Implémenter la gestion des commentaires (suppression et conservation des commentaires)
+ * 2. Revoir le style global (photo, marges, voir les titres coupés)
  *
  */
