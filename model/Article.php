@@ -38,6 +38,7 @@ class Article
     public function setTitle($title)
     {
         $this->title = $title;
+        return $this;
     }
 
     /**
@@ -54,6 +55,7 @@ class Article
     public function setContent($content)
     {
         $this->content = $content;
+        return $this;
     }
 
     /**
@@ -70,6 +72,7 @@ class Article
     public function setDateCreation($dateCreation)
     {
         $this->date_creation = $dateCreation;
+        return $this;
     }
 
 

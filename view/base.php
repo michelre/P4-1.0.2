@@ -12,8 +12,8 @@
   <img src="/public/image/fond.jpg" class="img-fluid" alt="photo illustration Alaska">
 </header>
 
-<section class="container">
-  <div class="text-center col-lg-10">
+<section class="d-flex flex-wrap">
+  <div class="text-center col-lg-6 mt-3">
     <h2> Qui suis-je?</h2>
     <p>Bien le bonjour à vous qui me lisez. Je me présente je m'apelle Jean Forteroche.
       Je suis écrivain depuis toujours je dirais.
@@ -21,16 +21,14 @@
       mon nouveau roman s'appelera "Un billet pour l'Alaska".
       Vous pourrez accéder directement a chaque épisode de ce roman soit par la barre de navigation en haut de mon site
       , soit juste en dessous de ma présentation.</p>
-  </div>
-</section>
-<h2 class="text-center">Les Épisodes du roman "Un billet pour l'Alaska"</h2>
-<section class="container">
+	</div>
+	<div class="text-center col-lg-6 mt-3">
+<h2>Les Épisodes du roman "Un billet pour l'Alaska"</h2>
   <table class="table table-striped">
     <thead>
     <tr>
       <th scope="col">EPISODES</th>
       <th scope="col ml-1 ">TITRES</th>
-      <th scope="col">EXTRAITS</th>
     </tr>
     </thead>
     <tbody>
@@ -40,21 +38,21 @@
       <td><a
           href="?action=detailArticle&articleId=<?php echo $article->getId(); ?>"><?php echo $article->getTitle() ?></a>
       </td>
-      <td><?php echo $article->getDateCreation() ?></td>
-    </tr>
+      </tr>
     </tbody>
       <?php } ?>
   </table>
+	</div>
 </section>
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
-<div class="contact mt-5">
-  <h2 class="text-center mb-4">Contact</h2>
-  <div class="bordure mb-4 p-4 d-sm-flex justify-content-around custom">
-    <a href=""><i class="fab fa-facebook-square fa-3x"></i><br/>Facebook</a><br/>
-    <a href=""><i class="fab fa-twitter-square fa-3x"></i><br/>Twitter</a><br/>
-    <a href=""><i class="fa fa-envelope-square fa-3x" aria-hidden="true"></i><br/>Email</a><br/>
+<div class="contact mt-3">
+  <h2 class="text-center">Contact</h2>
+  <div class="bordure p-4 d-flex justify-content-center">
+    <a href="" class="ml-3 "><i class="fab fa-facebook-square fa-3x"></i><br/>Facebook</a><br/>
+    <a href="" class="ml-3 "><i class="fab fa-twitter-square fa-3x"></i><br/>Twitter</a><br/>
+    <a href="" class="ml-3 "><i class="fa fa-envelope-square fa-3x" aria-hidden="true"></i><br/>Email</a><br/>
   </div>
 </div>
 

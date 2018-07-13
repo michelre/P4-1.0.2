@@ -8,25 +8,19 @@
 
 <?php include("templates/header.php"); ?>
 
-<div class=image_article>
-  <img src="/public/image/Image-Ep-1.jpeg" class="container-fluid">
-</div>
-
-
-<h1>
+<h1 class=" text-center mt-5">
     <?php echo $article->getTitle(); ?>
 </h1>
 
-<p>
+<p class="col-lg-6">
     <?php echo $article->getContent(); ?>
 </p>
 
 
-<h2>Commentaires</h2>
-<div class="zone_com">
+<h3 class="text-center border border-info rounded bg-info text-white container">Commentaires</h3>
 
     <?php foreach ($comments as $comment) { ?>
-      <div class="comment mt-3 mb-3 p-2 border-bottom">
+      <div class="mt-3 mb-3 p-2 border-bottom">
         <h4><?php echo $comment->getAuthor(); ?></h4>
         <p><?php echo $comment->getComment(); ?></p>
           <?php if (!$comment->isNotified()) { ?>
@@ -40,8 +34,7 @@
     <?php } ?>
 
 
-</div>
-<div class="zone_ajout_com">
+<div class="text-center">
   <form action="?action=addComment&articleId=<?php echo $article->getId(); ?>" method="post">
     Pseudo : <br/>
     <input type="text" name="author"/><br/>

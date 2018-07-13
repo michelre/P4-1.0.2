@@ -28,7 +28,7 @@
           <?php echo $article->getTitle() ?>
       </td>
       <td>
-        <a class="btn btn-primary" href="?action=updateArticle&articleId=<?php echo $article->getId(); ?>">
+        <a class="btn btn-primary" href="?action=displayUpdateArticle&articleId=<?php echo $article->getId(); ?>">
           Modifier
         </a>
         <a class="btn btn-danger" href="?action=deleteArticle&articleId=<?php echo $article->getId(); ?>">
@@ -42,7 +42,7 @@
     </tbody>
       <?php } ?>
   </table>
-  <a class="btn btn-secondary" href="?action=addArticle">Ajouter</a>
+  <a class="btn btn-success" href="?action=displayAddArticle">Ajouter</a>
 </section>
 </body>
 </html>
