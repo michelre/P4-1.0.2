@@ -53,29 +53,65 @@ class backendController
 
     }
 
-    public function modifyArticle($articleid ,$title, $content)//ici on crée le systeme pour modifié un article depuis la page admin
+    public function displayUpdateArticle($articleId)
     {
-    /*        $article = $this->ArticleDao
-			->getArticleById($articleId);
-            $article->setTitle($title);
-            $article->setContent($content);
-            $this->ArticleDao->update($article);
-			require('view/add-article.php');
-*/
+        $articles = $this->articleDao->findAll();
+        $article = $this->articleDao->findById($articleId);
+        require('view/modify-article.php');
     }
 
-    public function deleteArticle($articleid)//ici on crée le systeme pour supprimer un article depuis la page admin
+    public function modifyArticle($articleId, $title, $content)//ici on crée le systeme pour modifié un article depuis la page admin
     {
-  /*        $article = $this->ArticleDao->getArticleById($articleId);
-          $this->CommentDao->deleteAllFromArticle($article);
-          $this->ArticleDao->delete($article);
-		header('location:?action=pageAdmin'); */
+        $article = $this->articleDao->findById($articleId);
+        $article->setTitle($title);
+        $article->setContent($content);
+        $this->articleDao->update($article);
+        header('Location: ?action=detailArticle&articleId=' . $articleId);
     }
 
-    public function postArticle($title, $content, $author)
+    public function deleteArticle($articleId)
     {
-		$article = new Article($title, $content, $author);
+        $article = $this->articleDao->findById($articleId);
+        $this->commentDao->deleteAllFromArticle($article);
+        $this->articleDao->delete($article);
+        header('location:?action=pageAdmin');
+    }
+
+    public function displayAddArticle()
+    {
+        $articles = $this->articleDao->findAll();
+        require('view/add-article.php');
+    }
+
+    public function postArticle($title, $content)
+    {
+        $article = new Article();
+        $article->setTitle($title)
+            ->setContent($content);
+        $this->articleDao->create($article);
+        header('location:?action=pageAdmin');
+    }
+
+    public function notifiedComments($articleId)
+    {
+        $articles = $this->articleDao->findAll();
+        $comments = $this->commentDao->findAllByArticleId($articleId, true);
+        require('view/notified-comments.php');
+    }   
+	
+	public function keepComment($commentId)
+    {
+	    $comment = $this->commentDao->findbyid($commentId);
+		$this -> commentDao ->acceptnotify($comment);
+       	header('location:?action=pageAdmin');
+    }   
+	
+	public function deleteComment($commentId)
+    {	
+		$comment = $this -> commentDao ->findbyid($commentId);
+		$this -> commentDao ->delete($comment);
 		header('location:?action=pageAdmin');
-    }//ici on crée le systeme pour poster un article depuis la page admin avec les info titre/contenu/auteur
+    }
 
+	
 }

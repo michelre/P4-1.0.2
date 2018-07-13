@@ -45,5 +45,10 @@ class FrontendController
         $this->commentDao->notify($comment);
         header('Location: ?action=detailArticle&articleId=' . $comment->getArticleId());
     }
-
+    public function acceptnotifiyComment($commentId)
+    {
+        $comment = $this->commentDao->findById($commentId);
+        $this->commentDao->acceptnotify($comment);
+        header('Location: ?action=detailArticle&articleId=' . $comment->getArticleId());
+    }
 }
